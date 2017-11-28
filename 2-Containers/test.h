@@ -13,30 +13,30 @@ public:
 
 };
 
-int add(int a, int b)
+static int add(int a, int b)
 {
 	return a + b;
 }
 
-float add(float a, float b)
+static float add(float a, float b)
 {
 	return a + b;
 }
 
 template<typename T>
-T sub(T a, T b)
+static T sub(T a, T b)
 {
 	return a - b;
 }
 
 template<typename T>
-void print(T a)
+static void print(T a)
 {
 	cout << a << endl;
 }
 
 template<>
-void print(Person value)
+static void print(Person value)
 {
 	cout << value.name << endl;
 	cout << value.age << endl;
@@ -44,19 +44,19 @@ void print(Person value)
 }
 
 template<typename T>
-T min(T a, T b)
+static T min(T a, T b)
 {
 	return a < b ? a : b;
 }
 
 template<typename T>
-T max(T a, T b)
+static T max(T a, T b)
 {
 	return a > b ? a : b;
 }
 
 template<typename T>
-T clmp(T a, T b, T c)
+static T clmp(T a, T b, T c)
 {
 	T sml = min(a, b);
 	T lrg = max(a, b);
@@ -76,7 +76,7 @@ T clmp(T a, T b, T c)
 }
 
 template<typename T>
-void swp(T &a, T &b)
+static void swp(T &a, T &b)
 {
 	T buffer = a;
 	a = b;
@@ -84,19 +84,19 @@ void swp(T &a, T &b)
 }
 
 template<>
-char min(char a, char b)
+static char min(char a, char b)
 {
 	return a < b ? a : b;
 }
 
 template<>
-char max(char a, char b)
+static char max(char a, char b)
 {
 	return a > b ? a : b;
 }
 
 template <bool checker>
-bool compare(bool b)
+static bool compare(bool b)
 {
 	if (checker == b)
 	{
@@ -107,7 +107,7 @@ bool compare(bool b)
 }
 
 template <typename T>
-T eql(T a, T b)
+static T eql(T a, T b)
 {
 	if (a != b)
 	{
@@ -118,7 +118,7 @@ T eql(T a, T b)
 }
 
 template <typename T>
-T noteql(T a, T b)
+static T noteql(T a, T b)
 {
 	if (a == b)
 	{

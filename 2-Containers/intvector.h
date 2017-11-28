@@ -21,9 +21,16 @@ public:
 	int front() const;
 	int back() const;
 
-	int operator[](unsigned idx)const;
-	int &operator[](unsigned idx);
+	int operator[](size_t idx)const;
+	int &operator[](size_t idx);
 	void clear();
+	void erase(size_t idx);
+	int count(int num)const;
+	void insert(size_t idx, int num);
+	void Reserve(size_t newCapacity);
+	void Compact();
+
+	void printVector();
 
 
 private: 

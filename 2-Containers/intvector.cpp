@@ -1,6 +1,8 @@
 #include "intvector.h"
 #include <cassert>
 #include<cstring>
+#include"test.h"
+#include <iostream>
 
 intVector::intVector()
 {
@@ -65,23 +67,87 @@ int intVector::back() const
 	return data[size - 1];
 }
 
-int intVector::operator[](unsigned idx) const
+int intVector::operator[](size_t idx) const
 {
 	return data[idx];
 }
-int & intVector::operator[](unsigned idx)
+int & intVector::operator[](size_t idx)
 {
 	return data[idx];
 }
 
 void intVector::clear() 
 {
-	int * newData = new int[capacity];
-	int * newData = new int[size];
-	delete[] data;
-	
-	data = newData;
+	size = 0;
+}
 
+void intVector::erase(size_t idx)
+{
+	for (size_t i = idx; i < size; i++)
+	{
+		swp(data[i], data[i + 1]);
+	}
+	size--;
+}
+
+int intVector::count(int num) const
+{
+	int counter = 0;
+
+	for(size_t i = 0; i < size; i++)
+	{
+		if (data[i] == num)
+		{
+			counter++;
+		}
+	}
+
+	return counter;
+}
+
+void intVector::insert(size_t idx, int num)
+{
+	grow(size + 1);
+	size++;
+	int buffer = data[idx];
+	data[idx] = num;
+	
+	for (size_t i = idx; i < size; i++)
+	{
+		swp(data[i + 1], buffer);
+	}
+}
+
+void intVector::Reserve(size_t newCapacity)
+{
+	if (newCapacity > capacity)
+	{
+		int *newData = new int[newCapacity];
+		memcpy(newData, data, sizeof(int) * size);
+		delete[] data;
+		data = newData;
+		capacity = newCapacity;
+	}
+}
+
+void intVector::Compact()
+{
+	if (capacity > size)
+	{
+		int * newData = new int[size];
+		memcpy(newData, data, sizeof(int) * size);
+		delete[] data;
+		data = newData;
+		capacity = size;
+	}
+}
+
+void intVector::printVector()
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		std::cout << data[i] << std::endl;
+	}
 }
 
 bool intVector::grow(size_t minSize)
