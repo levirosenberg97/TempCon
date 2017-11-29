@@ -20,7 +20,7 @@ public:
 	bool empty() const;
 	int front() const;
 	int back() const;
-
+	
 	int operator[](size_t idx)const;
 	int &operator[](size_t idx);
 	void clear();
