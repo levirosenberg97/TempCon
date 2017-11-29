@@ -39,8 +39,9 @@ int main()
 	val.append(4);
 
 	//val.pop();
-
-	val.eraseRange(2, 4);
+	//val.erase(4);
+	//val.eraseRange(2, 4);
+	//val.insert(3, 9);
 
 	val.printVector();
 

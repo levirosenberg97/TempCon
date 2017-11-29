@@ -20,7 +20,7 @@ public:
 	{
 		delete[] data;
 	}
-	
+
 	T& at(size_t idx)
 	{
 		assert(idx >= 0);
@@ -74,17 +74,19 @@ public:
 
 	void pop()
 	{
-		data[size - 1] = 0;
+		assert(size > 0);
 		size--;
 	}
 	
 	T operator[](size_t idx)const
 	{
+		assert(idx < size);
 		return data[idx];
 	}
 
 	T &operator[](size_t idx)
 	{
+		assert(idx < size);
 		return data[idx];
 	}
 
@@ -102,9 +104,9 @@ public:
 		size--;
 	}
 
-	T count(int num)const
+	size_t count(T num)const
 	{
-		T counter = 0;
+		size_t counter = 0;
 
 		for (size_t i = 0; i < size; i++)
 		{
@@ -132,20 +134,26 @@ public:
 
 	void Reserve(size_t newCapacity)
 	{
-		T *newData = new T[newCapacity];
-		memcpy(newData, data, sizeof(T) * size);
-		delete[] data;
-		data = newData;
-		capacity = newCapacity;
+		if (newCapacity > capacity)
+		{
+			T *newData = new T[newCapacity];
+			memcpy(newData, data, sizeof(T) * size);
+			delete[] data;
+			data = newData;
+			capacity = newCapacity;
+
+		}
 	}
 
 	void Compact()
 	{
 		if (capacity > size)
 		{
-			int * newData = new int[size];
-			memcpy(newData, data, sizeof(int) * size);
+			T * newData = new T[size];
+			memcpy(newData, data, sizeof(T) * size);
+
 			delete[] data;
+
 			data = newData;
 			capacity = size;
 		}
