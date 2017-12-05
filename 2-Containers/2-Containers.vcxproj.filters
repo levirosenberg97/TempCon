@@ -21,6 +21,9 @@
     <ClCompile Include="intvector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="intLinkedListNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="intvector.h">
@@ -30,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tvector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intlinkedlist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

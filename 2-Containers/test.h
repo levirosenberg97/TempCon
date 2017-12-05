@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#pragma warning(2:4235)  
 using namespace std;
 
 class Person
@@ -111,7 +112,7 @@ static T eql(T a, T b)
 {
 	if (a != b)
 	{
-		_asm int 3;
+		abort;
 	}
 
 	return 0;
@@ -122,7 +123,7 @@ static T noteql(T a, T b)
 {
 	if (a == b)
 	{
-		_asm int 3;
+		abort;
 	}
 
 	return 0;
