@@ -3,14 +3,13 @@
 #include <iostream>
 #include <string>
 #pragma warning(2:4235)  
-using namespace std;
 
 class Person
 {
 public:
 	int age;
 	int height;
-	string name;
+	std::string name;
 
 };
 
@@ -33,15 +32,15 @@ static T sub(T a, T b)
 template<typename T>
 static void print(T a)
 {
-	cout << a << endl;
+	std::cout << a << endl;
 }
 
 template<>
 static void print(Person value)
 {
-	cout << value.name << endl;
-	cout << value.age << endl;
-	cout << value.height << endl;
+	std::cout << value.name << std::endl;
+	std::cout << value.age << std::endl;
+	std::cout << value.height << std::endl;
 }
 
 template<typename T>

@@ -24,6 +24,7 @@ void intLinkedList::append(int value)
 	intLinkedListNode * newNode = new intLinkedListNode;
 	newNode->value = value;
 	newNode->next = nullptr;
+	newNode->next = nullptr;
 
 	if (head == nullptr)
 	{
@@ -36,7 +37,7 @@ void intLinkedList::append(int value)
 		{
 			iter = iter->next;
 		}
-
+		newNode->prev = iter;
 		iter->next = newNode;
 	}
 }
@@ -102,6 +103,7 @@ int intLinkedList::back() const
 
 void intLinkedList::clear()
 {
+	assert(head != nullptr);
 	//head = nullptr;
 	intLinkedListNode * iter = head;
 
@@ -116,28 +118,38 @@ void intLinkedList::clear()
 
 void intLinkedList::erase(size_t idx)
 {
+	assert(!empty());
 	intLinkedListNode * iter = head;
-	assert(idx <= size());
+	assert(idx < size());
 	int counter = 0;
-	intLinkedListNode* temp = iter;
+	
+
+	
+
 	while (iter->next != nullptr && counter != idx)
 	{
-		counter++;
-		temp = iter;
 		iter = iter->next;
-		/*if (counter == idx)
-		{
-			delete iter;
-		}*/
+
+		counter++;
+		
 	}
 
 	assert(idx == counter);
 
 	 
-	temp->next = iter->next;
-	delete iter;
+	
+	
+	if (idx == 0)
+	{
+		head = iter->next;
+		head->prev = nullptr;
+	}
+	else
+	{
+		iter->prev->next = iter->next;
+	}
 
-	//iter = iter->next->next;
+	delete iter;
 }
 
 int intLinkedList::count(int sum) const
@@ -174,12 +186,11 @@ void intLinkedList::insert(int num, size_t idx)
 		{
 			temp->next = newItem;
 			newItem->next = iter;
-		//	iter->next->value = iter->value;
-		//	iter->value = num;
 			
 		}
 		counter++;
 		iter = iter->next;
+		
 		
 	}
 }

@@ -3,34 +3,83 @@
 #include "tvector.h"
 #include <iostream>
 #include"intlinkedlist.h"
-using std::cout;
+#include"algorithms.h"
+#include"iterator.h"
+#include<vector>
+#include<list>
+#include"Stack.h"
+#include"Queue.h"
+//using std::cout;
+
 
 int main()
 {
-	 intLinkedList nums;
+	Stack<int> pan;
+	pan.push(0);
+	pan.push(1);
+	pan.push(2);
+	pan.push(3);
+	pan.push(4);
+
+	int siz = pan.size();
+	int corn = pan.pop();
+	
+	int top = pan.Top();
+	pan.pop();
+	pan.pop();
+	pan.pop();
+	pan.pop();
+
+	bool not = pan.empty();
+
+	Queue<int> pax;
+	pax.push(0);
+	pax.push(1);
+	pax.push(2);
+	pax.push(3);
+
+	bool pls = pax.empty();
+	int zis = pax.size();
+	int woop = pax.pop();
+	int boop = pax.front();
+
+	/*tVector<int> nums;
+	nums.append(1);
+	nums.append(3);
+	nums.append(5);
+	nums.append(7);
+	nums.append(9);
+
+	auto begin = nums.begin();
+	auto end = nums.end();
+
+	int total = addRange<iterator<tVector<int>>, int>(begin, end);
+
+	int arrayOfNums[] = { 1,3,5,7,9 };
+	int total2 = addRange<int*, int>(arrayOfNums, arrayOfNums + 5);
+	
+
+	int nums[] = { 1,3,5,7,9 };
+	int * start = nums;
+	int * end = nums + 4;
+
+	addRange(start, end);
+
+
+	 intLinkedList list;
 	
 	 
-		 nums.append(1);
-		 nums.append(2);
-		 nums.append(4);
-		 nums.append(4);
+		 list.append(1);
+		 list.append(2);
+		 list.append(3);
+		 list.append(4);
 
-		 int cou = nums.count(4);
-		
-
-		 //int siz = nums.size();
-		 //int beg = nums.front();
-		 //int end = nums.back();
-		 ////nums.clear();
-		 //bool em = nums.empty();
-		// nums.erase(1);
-		// int cat = nums.at(2);
 	 
 	 
 	
 
 	//tVector<int> val;
-	/*nums.append(1);
+	nums.append(1);
 	nums.append(4);
 	nums.append(4);
 	nums.append(4);

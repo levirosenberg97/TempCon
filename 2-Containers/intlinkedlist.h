@@ -1,5 +1,5 @@
 #pragma once
-
+template <typename T>
 class intLinkedList
 {
 public:
@@ -7,33 +7,202 @@ public:
 	{
 		int value;
 		intLinkedListNode * next;
+		intLinkedListNode * prev;
 	};
 
-	intLinkedList();
-	~intLinkedList();
+	intLinkedList::intLinkedList()
+		: head(nullptr)
+	{
 
-	void append(int value);
+	}
 
-	int at(size_t index);
+	intLinkedList::~intLinkedList()
+	{
+		intLinkedListNode * iter = head;
 
-	size_t size() const;
+		while (iter != nullptr)
+		{
+			intLinkedListNode * next = iter->next;
+			delete iter;
+			iter = next;
+		}
+	}
 
-	bool empty() const;
+	void intLinkedList::append(T value)
+	{
+		intLinkedListNode * newNode = new intLinkedListNode;
+		newNode->value = value;
+		newNode->next = nullptr;
+		newNode->next = nullptr;
 
-	int front() const;
+		if (head == nullptr)
+		{
+			head = newNode;
+		}
+		else
+		{
+			intLinkedListNode * iter = head;
+			while (iter->next != nullptr)
+			{
+				iter = iter->next;
+			}
+			newNode->prev = iter;
+			iter->next = newNode;
+		}
+	}
 
-	int back() const;
+	T intLinkedList::at(T index)
+	{
+		intLinkedListNode* iter = head;
+		T counter = 0;
 
-	void clear();
+		while (counter != index && iter != nullptr)
+		{
+			counter++;
+			iter = iter->next;
+		}
 
-	void erase(size_t idx);
+		assert(iter != nullptr);
 
-	int count(int sum) const;
+		return iter->value;
+	}
 
-	void insert(int num, size_t idx);
+	T intLinkedList::size() const
+	{
+		intLinkedListNode* iter = head;
+		if (iter == nullptr)
+		{
+			return 0;
+		}
+		T counter = 1;
 
-private:
-	intLinkedListNode * head;
+
+		while (iter->next != nullptr)
+		{
+			counter++;
+			iter = iter->next;
+		}
+
+		return counter;
+	}
+
+	bool intLinkedList::empty() const
+	{
+		return head == nullptr;
+	}
+
+	T intLinkedList::front() const
+	{
+		assert(head != nullptr);
+		return head->value;
+	}
+
+	T intLinkedList::back() const
+	{
+		assert(!empty());
+		intLinkedListNode* iter = head;
+
+		while (iter->next != nullptr)
+		{
+			iter = iter->next;
+		}
+
+		return iter->value;
+	}
+
+	void intLinkedList::clear()
+	{
+		assert(head != nullptr);
+		//head = nullptr;
+		intLinkedListNode * iter = head;
+
+		while (iter != nullptr)
+		{
+			intLinkedListNode * next = iter->next;
+			delete iter;
+			iter = next;
+		}
+		head = nullptr;
+	}
+
+	void intLinkedList::erase(size_t idx)
+	{
+		assert(!empty());
+		intLinkedListNode * iter = head;
+		assert(idx < size());
+		T counter = 0;
+
+
+
+
+		while (iter->next != nullptr && counter != idx)
+		{
+			iter = iter->next;
+
+			counter++;
+
+		}
+
+		assert(idx == counter);
+
+
+
+
+		if (idx == 0)
+		{
+			head = iter->next;
+			head->prev = nullptr;
+		}
+		else
+		{
+			iter->prev->next = iter->next;
+		}
+
+		delete iter;
+	}
+
+	T intLinkedList::count(T sum) const
+	{
+		intLinkedListNode* iter = head;
+		T counter = 0;
+		while (iter != nullptr)
+		{
+
+			if (iter->value == sum)
+			{
+				counter++;
+			}
+			iter = iter->next;
+		}
+		return counter;
+	}
+
+	void intLinkedList::insert(T num, T idx)
+	{
+		intLinkedListNode* iter = head;
+		intLinkedListNode* newItem = new intLinkedListNode;
+		intLinkedListNode* temp = head;
+		newItem->value = num;
+		T counter = 0;
+		while (iter != nullptr)
+		{
+			if (counter == idx - 1)
+			{
+				temp = iter;
+			}
+
+			if (counter == idx)
+			{
+				temp->next = newItem;
+				newItem->next = iter;
+
+			}
+			counter++;
+			iter = iter->next;
+
+
+		}
+	}
 
 
 };
