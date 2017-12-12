@@ -9,12 +9,19 @@
 #include<list>
 #include"Stack.h"
 #include"Queue.h"
-//using std::cout;
+
+#include"hashMap.h"
 
 
 int main()
 {
-	Stack<int> pan;
+	hashMap<int> hashbrowns;
+
+	hashbrowns.put(34);
+
+	bool plsWork = hashbrowns.containsKey(3);
+
+	/*Stack<int> pan;
 	pan.push(0);
 	pan.push(1);
 	pan.push(2);
@@ -41,7 +48,7 @@ int main()
 	bool pls = pax.empty();
 	int zis = pax.size();
 	int woop = pax.pop();
-	int boop = pax.front();
+	int boop = pax.front();*/
 
 	/*tVector<int> nums;
 	nums.append(1);

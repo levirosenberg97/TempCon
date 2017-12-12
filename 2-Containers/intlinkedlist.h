@@ -5,7 +5,7 @@ class intLinkedList
 public:
 	struct intLinkedListNode
 	{
-		int value;
+		T value;
 		intLinkedListNode * next;
 		intLinkedListNode * prev;
 	};
@@ -54,7 +54,7 @@ public:
 	T intLinkedList::at(T index)
 	{
 		intLinkedListNode* iter = head;
-		T counter = 0;
+		int counter = 0;
 
 		while (counter != index && iter != nullptr)
 		{
@@ -67,14 +67,14 @@ public:
 		return iter->value;
 	}
 
-	T intLinkedList::size() const
+	int intLinkedList::size() const
 	{
 		intLinkedListNode* iter = head;
 		if (iter == nullptr)
 		{
 			return 0;
 		}
-		T counter = 1;
+		int counter = 1;
 
 
 		while (iter->next != nullptr)
@@ -130,7 +130,7 @@ public:
 		assert(!empty());
 		intLinkedListNode * iter = head;
 		assert(idx < size());
-		T counter = 0;
+		int counter = 0;
 
 
 
@@ -161,10 +161,10 @@ public:
 		delete iter;
 	}
 
-	T intLinkedList::count(T sum) const
+	int intLinkedList::count(T sum) const
 	{
 		intLinkedListNode* iter = head;
-		T counter = 0;
+		int counter = 0;
 		while (iter != nullptr)
 		{
 
@@ -177,13 +177,13 @@ public:
 		return counter;
 	}
 
-	void intLinkedList::insert(T num, T idx)
+	void intLinkedList::insert(T num, size_t idx)
 	{
 		intLinkedListNode* iter = head;
 		intLinkedListNode* newItem = new intLinkedListNode;
 		intLinkedListNode* temp = head;
 		newItem->value = num;
-		T counter = 0;
+		size_t counter = 0;
 		while (iter != nullptr)
 		{
 			if (counter == idx - 1)
