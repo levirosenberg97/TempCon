@@ -36,7 +36,7 @@ public:
 	T& at(size_t idx)
 	{
 		assert(idx >= 0);
-		assert(idx < size);
+		//assert(idx < size);
 
 		return data[idx];
 	}

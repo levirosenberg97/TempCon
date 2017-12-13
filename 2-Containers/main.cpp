@@ -10,16 +10,20 @@
 #include"Stack.h"
 #include"Queue.h"
 
-#include"hashMap.h"
+#include"binaryTree.h"
 
 
 int main()
 {
-	hashMap<int> hashbrowns;
+	btree oak;
+	oak.insert(14);
+	oak.insert(15);
+	oak.insert(5);
+	oak.insert(3);
 
-	hashbrowns.put(34);
-
-	bool plsWork = hashbrowns.containsKey(3);
+	
+	//bool plsWork = hashbrowns.get();
+	//int key = hashbrowns.getKey(293);
 
 	/*Stack<int> pan;
 	pan.push(0);

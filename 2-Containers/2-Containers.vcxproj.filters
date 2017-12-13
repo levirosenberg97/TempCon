@@ -50,7 +50,7 @@
     <ClInclude Include="Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hashMap.h">
+    <ClInclude Include="binaryTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
