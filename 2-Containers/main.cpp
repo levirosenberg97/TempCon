@@ -15,13 +15,11 @@
 
 int main()
 {
-	btree oak;
-	oak.insert(14);
-	oak.insert(15);
-	oak.insert(5);
-	oak.insert(3);
-
-	
+	btree<char> oak;
+	oak.insert('e');
+	oak.insert('t');
+	oak.insert('b');
+	oak.insert('a');
 	//bool plsWork = hashbrowns.get();
 	//int key = hashbrowns.getKey(293);
 

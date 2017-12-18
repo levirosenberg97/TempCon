@@ -2,6 +2,7 @@
 #include "tvector.h"
 #include "intvector.h"
 
+
 struct node
 {
 	int key_value;
@@ -9,6 +10,8 @@ struct node
 	node *right;
 };
 
+
+template <typename T>
 class btree
 {
 public:
@@ -22,7 +25,7 @@ public:
 		destroyTree();
 	}
 
-	void insert(int key)
+	void insert(T key)
 	{
 		if (root != NULL)
 		{
@@ -37,7 +40,7 @@ public:
 		}
 	}
 
-	node *search(int key)
+	node *search(T key)
 	{
 		return search(key, root);
 	}
@@ -58,7 +61,7 @@ private:
 		}
 	}
 
-	void insert(int key, node *leaf)
+	void insert(T key, node *leaf)
 	{
 		if (key < leaf->key_value)
 		{
@@ -90,7 +93,7 @@ private:
 		}
 	}
 
-	node *search(int key, node *leaf)
+	node *search(T key, node *leaf)
 	{
 		if (leaf != NULL)
 		{
